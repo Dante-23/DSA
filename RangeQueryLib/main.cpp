@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <math.h>
-#include "include/sqrt_decomposition.h"
+#include "include/sqrt_decomposition.hpp"
 using namespace std;
 
 #define MAXN 200001
@@ -49,14 +49,14 @@ int main() {
         cin >> inp[i];
     }
     cout << "1" << endl;
-    sqrt_decomposition sqrt_dec(inp);
+    sqrt_decomposition<long long> sqrt_dec(inp);
     cout << "2" << endl;
     while (1) {
-        // int u, v;
-        // cin >> u >> v;
-        // cout << sqrt_dec.query(u, v) << endl;
-        int pos, vl;
-        cin >> pos >> vl;
-        sqrt_dec.update_at(pos, vl);
+        int u, v;
+        cin >> u >> v;
+        cout << sqrt_dec.query(u, v) << endl;
+        // int pos, vl;
+        // cin >> pos >> vl;
+        // sqrt_dec.update_at(pos, vl);
     }
 }

@@ -1,7 +1,9 @@
-#include "../include/sqrt_decomposition.h"
+#include "../include/sqrt_decomposition.hpp"
 
+template class sqrt_decomposition<int>;
+template class sqrt_decomposition<long long>;
 
-void sqrt_decomposition::build() {
+template <typename T> void sqrt_decomposition<T>::build() {
     int n = (int) m_arr.size();
     int sq = (int)(sqrt((double)n));
     for (int i = 0; i < n; i++) {
@@ -10,7 +12,7 @@ void sqrt_decomposition::build() {
     index = (n - 1) / sq + 1;
 }
 
-long long sqrt_decomposition::calc(int low, int high) {
+template <typename T> long long sqrt_decomposition<T>::calc(int low, int high) {
     long long sum = 0;
     for (; low <= high; low++) {
         sum += m_arr[low];
@@ -18,14 +20,14 @@ long long sqrt_decomposition::calc(int low, int high) {
     return sum;
 }
 
-sqrt_decomposition::sqrt_decomposition(vector<long long> &inp) {
+template <typename T> sqrt_decomposition<T>::sqrt_decomposition(vector<T> &inp) {
     m_arr = inp;
     m_brr.resize(m_arr.size());
     index = 0;
     build();
 }
 
-int sqrt_decomposition::query(int low, int high) {
+template <typename T> int sqrt_decomposition<T>::query(int low, int high) {
     int n = (int) m_arr.size();
     int sq = (int)(sqrt((double)n));
     int low_block = low / sq, high_block = high / sq;
@@ -42,7 +44,7 @@ int sqrt_decomposition::query(int low, int high) {
     return sum;
 }
 
-void sqrt_decomposition::update_at(int pos, int vl) {
+template <typename T> void sqrt_decomposition<T>::update_at(int pos, int vl) {
     int n = (int) m_arr.size();
     int sq = (int)(sqrt((double)n));
     m_arr[pos] = vl;
@@ -56,5 +58,5 @@ void sqrt_decomposition::update_at(int pos, int vl) {
     m_brr[pos / sq] = sum;
 }
 
-void sqrt_decomposition::update_range(int low, int high, int vl) {
+template <typename T> void sqrt_decomposition<T>::update_range(int low, int high, int vl) {
 }
